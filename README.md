@@ -56,7 +56,7 @@ All scripts are UTF-8.
 
 
 ### Variables in antimicrobial-use quantification records
-# Core identifiers and production-cycle variables
+#### Core identifiers and production-cycle variables
 
 | Variable | Description | Values / units |
 |---|---|---|
@@ -69,7 +69,7 @@ All scripts are UTF-8.
 | `predicted_weight_kg` | Predicted mean live body weight of a broiler on that day | kg/broiler |
 | `entire_batch` | whether drugs has been given to birds in the full production batch or not |  0 = no, 1 = yes |
 
-# Antimicrobial-use variables
+#### Antimicrobial-use variables
 
 | Variable | Description | Values / units |
 |---|---|---|
@@ -85,7 +85,7 @@ All scripts are UTF-8.
 | `du_amt_g_ml` | Unit used to record the administered product quantity | `g` or `mL` |
 | `du_amt` | Total amount of antimicrobial product administered | g or mL, according to `du_amt_g_ml` |
 
-# Feed- and water-administration variables
+#### Feed- and water-administration variables
 
 | Variable | Description | Values / units |
 |---|---|---|
@@ -96,7 +96,7 @@ All scripts are UTF-8.
 | `waterintake_per_broiler_24h_ml` | Actual drinking-water intake per broiler over 24 hours | mL/broiler/24 h |
 | `water_prepare_water_intake` | The comporision between the amount 24-hour drinking-water intake and the amount of water that used to deliver the antimicrobial | real number |
 
-# Active-moiety and dose variables
+#### Active-moiety and dose variables
 
 | Variable | Description | Values / units |
 |---|---|---|
@@ -106,7 +106,7 @@ All scripts are UTF-8.
 | `Dose_in_mg_or_IU_per_chicken` | Active antimicrobial dose administered per treated chicken | mg or IU/chicken/day |
 | `Dose_in_mg_kg_day` | Used Daily Dose (UDD): active antimicrobial dose per kilogram body weight per day | mg/kg/day |
 
-# Derived analytical variables and definitions
+#### Derived analytical variables and definitions
 
 | Variable / indicator | Definition | Unit |
 |---|---|---|
