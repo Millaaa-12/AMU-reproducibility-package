@@ -1,0 +1,50 @@
+model {
+  #SD <- 2
+  ### 1. Logistic Regression for No usage → Usage
+  for (i in 1:N_no_use_days) {
+    usage_today[i] ~ dbern(p_usage[i])
+    logit(p_usage[i]) <- 
+                     beta0 + 
+                     different_periods [i] +
+                     logistic_random_farm[farm_id[i]]
+
+     different_periods [i] <- beta_interval0*T[i] + 
+      beta_interval1 * (T[i] - CP1) * step(T[i] - CP1) +
+      beta_interval2 *  (T[i] - CP2) * step(T[i] - CP2)
+
+  }
+
+  for (f in 1:N_farms) {
+    logistic_random_farm[f] ~ dnorm(0, logistic_farm_tau)
+  }
+
+  # prior distribution of parameters from Logistic regression
+    beta0 ~ dnorm(0, 1/SD^2)
+    beta_interval0 ~ dnorm(0, 1/SD^2)
+    beta_interval1 ~ dnorm(0, 1/SD^2)
+    beta_interval2 ~ dnorm(0, 1/SD^2)
+
+
+  # random effect
+  logistic_farm_tau ~ dgamma(1, 1)
+  logistic_farm_sigma <- 1 / sqrt(logistic_farm_tau)
+
+  ### 2. Zero-Truncated Poisson Model for usage duration
+  for (k in 1:N_usage_events) {
+    duration[k] ~ dpois(lambda_use[k])T(1,)
+    log(lambda_use[k]) <- alpha0 +  
+                          poisson_random_farm[farm_event[k]]
+  }
+  
+  for (f in 1:N_farms) {
+    poisson_random_farm[f] ~ dnorm(0, poisson_farm_tau)
+  }
+
+  # prior distribution of paramaters from Poisson regression
+  alpha0 ~ dnorm(0, 1/SD^2)
+
+  # random effect
+  poisson_farm_tau ~ dgamma(1, 1)
+  poisson_farm_sigma <- 1 / sqrt(poisson_farm_tau)
+
+}
