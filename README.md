@@ -42,18 +42,14 @@ All scripts are UTF-8.
 ### Variables in daily farm records
 | Variable | Description | Values / units |
 |---|---|---|
-| farm_id | farm identifier | 1-60 |
-| Admin_days_cycle | day of age of the broiler | days |
+| farm_id | Unique farm identifier | 1-60 |
+| Days_cycle | length of the production cycle | days |
+| Admin_days_cycle | day of age of the broiler throughout the production cycle | days |
+| dead| the number of birds dead that day | count |
+| sold| the number of birds sold that day | count |
+| alive_start_of_day | the number of alive birds at start of day | count |
 | Drug_usage_final | any antimicrobial used that day | 0 = no, 1 = yes |
 | preventive / therapeutic | antimicrobial used for prevention / terapeutic purpose | 0/1 |
-| dead| the number of birds dead that day | count |
-| alive_start_of_day | the number of alive birds at start of day | count |
-| Days_cycle | length of the production cycle | days |
-
-| *Derived* all_AMU | factor of Drug_usage_final (Step01) | 0/1 |
-| *Derived* mortality_risk | dead / alive_start_of_day (Step01) | proportion |
-| *Derived* event_id, duration | treatment-event number and length (Step00) | integer / days |
-
 
 ### Variables in antimicrobial-use quantification records
 #### Core identifiers and production-cycle variables
@@ -61,47 +57,38 @@ All scripts are UTF-8.
 | Variable | Description | Values / units |
 |---|---|---|
 | `farm_id` | Unique farm identifier | 1–60 |
-| `Days_cycle` | Total length of the production cycle | days |
-| `Date_day_zero` | Calendar date corresponding to day 0 of the production cycle | date, `YYYY-MM-DD` |
-| `Date_last_day` | Calendar date of the last production-cycle day | date, `YYYY-MM-DD` |
-| `date` | Calendar date of the record or antimicrobial administration | date, `YYYY-MM-DD` |
-| `day` | Broiler age on the record date, calculated from `Date_day_zero` | days |
+| `Days_cycle` | The length of the production cycle | days |
+| `day` | Broiler age on the record date with drug administration | days |
+| `alive_start_of_day` | the number of alive birds at start of day | count |
 | `predicted_weight_kg` | Predicted mean live body weight of a broiler on that day | kg/broiler |
-| `entire_batch` | whether drugs has been given to birds in the full production batch or not |  0 = no, 1 = yes |
 
 #### Antimicrobial-use variables
 
 | Variable | Description | Values / units |
 |---|---|---|
 | `Administration_antimicrobials` | The administrated antimicrobial | text, antimicrobial |
-| `du_why_use` | Reported reason for antimicrobial use | categorical; e.g., preventive, therapeutic =1, preventive =2 |
-| `du_ifthera_disease` | Reported disease or clinical indication when antimicrobial use is therapeutic | text or coded disease category; `NA` if not therapeutic |
-| `route` | Route of antimicrobial administration | text; mixed in feed, mixed in drinking water, other |
-| `brand` | Commercial product/brand name | text |
-| `substance` | Antimicrobial active substance | standardized substance name |
+| `substance_from_product` | Antimicrobial active substance listed on the package lable | standardized substance name |
 | `concentration` | Product-label concentration as originally recorded | text; e.g., `%`, mg/g, or mg/mL |
-| `concentration_mg_1gram_or_1ml` | Amount of active substance per gram or millilitre of product | mg/g or mg/mL |
-| `concentration_colistin_IU_gram` | Colistin activity concentration, where applicable | IU/g; `NA` for non-colistin products |
-| `du_amt_g_ml` | Unit used to record the administered product quantity | `g` or `mL` |
+| `Active_moiety_per_mg_of_derivative` | Conversion factor from antimicrobial derivative to active moiety | mg active moiety/mg derivative, or IU/mg where applicable |
 | `du_amt` | Total amount of antimicrobial product administered | g or mL, according to `du_amt_g_ml` |
+| `du_why_use` | Reported reason for antimicrobial use | categorical; therapeutic =1, preventive =2 |
+| `du_ifthera_disease` | Reported disease or clinical indication when antimicrobial use is therapeutic | text or coded disease category; `NA` if not therapeutic |
 
 #### Feed- and water-administration variables
 
 | Variable | Description | Values / units |
 |---|---|---|
+| `entire_batch` | Whether drugs has been given to birds in the full production batch or not |  0 = no, 1 = yes |
+| `route` | Route of antimicrobial administration | text; mixed in feed, mixed in drinking water, other |
 | `route_amtfeed_kg` | Amount of feed used to deliver the antimicrobial | kg |
 | `route_amtwater_litres` | Amount of drinking water used to deliver the antimicrobial | litres |
-| `the_concentration_in_diluted_amtwater_mgL` | Concentration of active substance in diluted medicated drinking water | mg/L |
 | `waterintake_24h_litter` | Total flock drinking-water intake over 24 hours | litres/24 h |
-| `waterintake_per_broiler_24h_ml` | Actual drinking-water intake per broiler over 24 hours | mL/broiler/24 h |
-| `water_prepare_water_intake` | The comporision between the amount 24-hour drinking-water intake and the amount of water that used to deliver the antimicrobial | real number |
+| `the_concentration_in_diluted_amtwater_mgL` | Concentration of active substance in diluted medicated drinking water | mg/L |
 
-#### Active-moiety and dose variables
+#### Dose variables
 
 | Variable | Description | Values / units |
 |---|---|---|
-| `Active_moiety_per_mg_of_derivative` | Conversion factor from antimicrobial derivative to active moiety | mg active moiety/mg derivative, or IU/mg where applicable |
-| `Note_for_active_moiety_per_mg_of_derivative` | Notes or source supporting the active-moiety conversion factor | text |
 | `total_active_flock_dose_mg_or_IU` | Total amount of active antimicrobial moiety administered to the flock on that treatment day | mg or IU/flock/day |
 | `Dose_in_mg_or_IU_per_chicken` | Active antimicrobial dose administered per treated chicken | mg or IU/chicken/day |
 | `Dose_in_mg_kg_day` | Used Daily Dose (UDD): active antimicrobial dose per kilogram body weight per day | mg/kg/day |
