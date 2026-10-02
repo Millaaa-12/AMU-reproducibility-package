@@ -38,7 +38,7 @@ All scripts are UTF-8.
 | `VN_AMU_Quantification.csv` | farm-treatment-day administered drug | Antimicrobial-use quantification records |
 
 `VN_AMU_Quantification.csv` may contain multiple records for one farm-day when multiple antimicrobial products or active substances are administered.
-`DDDvet.csv` in step five are DDDvet values that sourced from the European Medicines Agency (EMA) ESVAC dataset. Please download the EMA standardised units of measurement page and the corresponding DDDvet/DCDvet reference document. 
+`DDDvet.csv` in step five are DDDvet values that sourced from the European Medicines Agency (EMA) ESVAC dataset. Please download the EMA standardised units of measurement page and the corresponding DDDvet reference document. 
 
 ### Variables in daily farm records
 | Variable | Description | Values / units |
