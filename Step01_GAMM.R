@@ -44,7 +44,7 @@ model1 <- gam(
   family = binomial(),
   method = "REML"
 )
-summary(model1)
+#summary(model1)
 #par(mfrow = c(2, 2))
 #gam.check(model1)
 #k.check(model1, subsample=5000, n.rep=400)
@@ -60,7 +60,7 @@ model2 <- gam(
   family = binomial(),
   method = "REML"
 )
-summary(model2)
+#summary(model2)
 #par(mfrow = c(2, 2))
 #gam.check(model2)
 #k.check(model2, subsample=5000, n.rep=400)
@@ -77,7 +77,7 @@ model3 <- gam(
   family = binomial(),
   method = "REML"
 )
-summary(model3)
+#summary(model3)
 #par(mfrow = c(2, 2))
 #gam.check(model3)
 #k.check(model3, subsample=5000, n.rep=400)
@@ -96,7 +96,6 @@ combined_plot <- wrap_plots(
   nrow = 2
 ) + plot_annotation(tag_levels = "a")
 
-combined_plot
 ggsave("output/Figure_S4_GAMM_partial_effects.tiff", 
        plot = combined_plot,
        width = 20, 
@@ -258,7 +257,6 @@ p3 <- plot_slopes_df(s3, "Rate of change in probability\nof a farm with AMU")
 # 6. Combine and save
 combined <- p1 + p2 + plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(size = 16, face = "bold"))
-combined
 
 ggsave("output/Figure_10_cutpoint_GAMM_marginal_effect_day.tiff", combined,
        width = 8, height = 4, dpi = 300, compression = "lzw", bg = "white")
