@@ -222,7 +222,6 @@ p4 <- ggplot(results_df, aes(x = day)) +
            label = "Blue line: mode\nShaded area: 95% HDI", 
            hjust = 0.5, size = 16 / .pt, color = "black")
 
-p4
 
 ### Proportion of days under therapeutic treatment per phase based on the posterior-predictive simulation ###
 ### Posterior-predictive simulation ###
@@ -425,5 +424,4 @@ p5 <- ggplot(proportion_data, aes(x = Phase, y = Proportion, fill = Phase)) +
   ) +
   scale_y_continuous(limits = c(0, 0.25), labels = scales::percent)
 
-print(p5)
 # p4 + p5 are combined and saved in Step04 (Figure 5)
