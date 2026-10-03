@@ -215,7 +215,6 @@ p1 <- ggplot(results_df, aes(x = day)) +
            size  = 16 / .pt,                       # annotation text size 16
            color = "black")
 
-p1
 
 ### Proportion of days under preventive treatment per phase based on the posterior-predictive simulation ###
 ### Posterior-predictive simulation ###
@@ -399,5 +398,4 @@ p2 <- ggplot(proportion_data, aes(x = Phase, y = Proportion, fill = Phase)) +
   ) +
   scale_y_continuous(limits = c(0, 0.25), labels = scales::percent)
 
-print(p2)
 # p1 + p2 are combined and saved in Step04 (Figure 5)
