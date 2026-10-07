@@ -1,6 +1,6 @@
-### Reproducibility package: Antimicrobial usage in slow-growing broiler chicken production cycles in northern Vietnam in 2022 to 2023
+### Longitudinal study assessing antimicrobial usage in broiler production cycles in northern Vietnam in 2022 to 2023
 This repository contains the R code and supporting files for reproducing the analyses for:
-**Antimicrobial usage in slow-growing broiler chicken production cycles in northern Vietnam in 2022 to 2023**
+**Longitudinal study assessing antimicrobial usage in broiler production cycles in northern Vietnam in 2022 to 2023**
 
 ### Creator
 [Mila (Chen) Xin] - ORCID [0009-0004-0257-7732] - [City University of Hong Kong]
